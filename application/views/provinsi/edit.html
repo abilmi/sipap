@@ -1,0 +1,18 @@
+<?php echo validation_errors(); ?>
+
+<?php echo form_open('provinsi/edit/'.$provinsi['PROVINSI_KODE'],array("class"=>"form-horizontal")); ?>
+
+	<div class="form-group">
+		<label for="PROVINSI_NAMA" class="col-md-4 control-label">PROVINSI NAMA</label>
+		<div class="col-md-8">
+			<input type="text" name="PROVINSI_NAMA" value="<?php echo ($this->input->post('PROVINSI_NAMA') ? $this->input->post('PROVINSI_NAMA') : $PROVINSI['PROVINSI_NAMA']); ?>" class="form-control" id="PROVINSI_NAMA" />
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<div class="col-sm-offset-4 col-sm-8">
+			<button type="submit" class="btn btn-success">Save</button>
+        </div>
+	</div>
+	
+<?php echo form_close(); ?>
