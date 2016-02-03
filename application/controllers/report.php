@@ -17,12 +17,30 @@ class Report extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+	public function report() {
+        parent::__construct();
+        $this->load->model('report_model');
+    }
 	public function index()
 	{
-		$this->load->view('report/head_side.php');
-		$this->load->view('report/transaksi.php');
-		$this->load->view('report/foot.php');
+		$data['report'] = $this->report_model->get_all_data_transaksi();
+		$this->load->view('report/head_side.php',$data);
+		$this->load->view('report/transaksi.php',$data);
+		$this->load->view('report/foot.php',$data);
+	}
 
+	public function laporanBongkarMuat()
+	{
+		$tahun = 0;
+		$bulan = 0;
+		if($this->input->post('tahun') != null)
+			$tahun = $this->input->post('tahun');
+		if($this->input->post('bulan') != null)
+			$bulan = $this->input->post('bulan');
+		$data['report'] = $this->report_model->get_all_data_transaksi($tahun, $bulan);
+		$this->load->view('report/head_side.php',$data);
+		$this->load->view('report/transaksi.php',$data);
+		$this->load->view('report/foot.php',$data);
 	}
 }
 

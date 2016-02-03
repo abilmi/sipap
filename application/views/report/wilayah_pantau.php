@@ -11,12 +11,15 @@
                     </div>
 
                     <div class="row">
+                        <img src="asset/login/img/provinsi.png"  />
+                        <img src="asset/login/img/kota.png"  />
+                        <img src="asset/login/img/emkl.png"  />
                         <div class="panel with-nav-tabs panel-primary">
                             <div class="panel-heading">
                                     <ul class="nav nav-tabs">
-                                        <li class="active"><a href="#tab1primary" data-toggle="tab">Provinsi</a></li>
-                                        <li><a href="#tab2primary" data-toggle="tab">Kota</a></li>
-                                        <li><a href="#tab3primary" data-toggle="tab">Titik Pantau Dermaga</a></li>
+                                        <li class="active"><a href="index.php/wilayah_pantau/master_data_provinsi" data-toggle="tab">Provinsi</a></li>
+                                        <li><a href="index.php/wilayah_pantau/master_data_kota" data-toggle="tab">Kota</a></li>
+                                        <li><a href="index.php/wilayah_pantau/master_data_titik_pantau" data-toggle="tab">Titik Pantau Dermaga</a></li>
                                         <!--
                                         <li class="dropdown">
                                             <a href="#" data-toggle="dropdown">Dropdown <span class="caret"></span></a>
@@ -30,40 +33,52 @@
                             </div>
                             <div class="panel-body">
                                 <div class="tab-content">
-                                    <div class="tab-pane fade in active" id="tab1primary">
+                                    <div class="tab-pane fade in active" >
+                                        
                                         <form class="form-horizontal">
+                                             <?php if($selected['PROVINSI_NAMA']=="")
+                                            {
+                                                echo '<form method="post" action="index.php/wilayah_pantau/add_new_provinsi">';
+                                            }
+                                            else
+                                                echo '<form method="post" action="index.php/wilayah_pantau/edit_selected_provinsi">';
+                                            ?>
                                             <fieldset>
                                                 <legend>Data Provinsi Mitra</legend>
                                                 
                                                 <div class="form-group">
                                                     <label class="col-lg-2 control-label" for="disabledInput">ID Provinsi</label>
                                                     <div class="col-lg-10">
-                                                        <input class="form-control disabled" id="disabledInput" placeholder="no ID" disabled="" type="text">
+                                                        <input class="form-control disabled" id="provinsi_kode" value="<?php echo $selected['PROVINSI_KODE']; ?>"disabled="" type="text">
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="col-lg-2 control-label" for="focusedInput">Nama Provinsi</label>
                                                     <div class="col-lg-10">
-                                                        <input class="form-control" id="focusedInput"  type="text">
+                                                        <input class="form-control" id="provinsi_nama"  type="text" value="<?php echo $selected['PROVINSI_NAMA']; ?>">
                                                     </div>
                                                 </div>
-                                                <button type="submit" class="btn btn-primary">Simpan</button>
-                                                <button type="reset" class="btn btn-default">Batal</button>
+                                                <?php if($selected['PROVINSI_NAMA']=="")
+                                                        {
+                                                            echo '<button href="'.site_url("/wilayah_pantau/add_new_provinsi").'" id="tambahProvinsi" class="btn btn-primary">Tambah</button>';
+                                                        }
+                                                        else
+                                                        {
+                                                            echo '<button href="'.site_url("/wilayah_pantau/edit_selected_provinsi" ).'" id="editProvinsi" class="btn btn-mini btn-warning">Simpan</button>';
+                                                        }
+                                                    ?>
                                             </fieldset>
                                         </form>
                                         <div class="bootstrap-admin-panel-content">
                                             <table class="table bootstrap-admin-table-with-actions">
                                                 <thead>
+                                                    <?php
+                                                    $no = 1;
+                                                    ?>
+                                                    <?php foreach ($daftar_provinsi as $a) {?>
                                                     <tr>
-                                                        <th>No</th>
-                                                        <th>Nama Provinsi</th>
-                                                        <th></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>3</td>
-                                                        <td>Kalimantan Selatan</td>
+                                                        <td><?php echo $no++ ?></td>
+                                                        <td><?php echo $a->PROVINSI_NAMA; ?></td>
                                                         <td class="actions">
                                                             <a href="#">
                                                                 <button class="btn btn-sm btn-primary">
@@ -79,144 +94,7 @@
                                                             </a>
                                                         </td>
                                                     </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="tab2primary">
-                                        <form class="form-horizontal">
-                                            <fieldset>
-                                                <legend>Data Kota Mitra</legend>
-                                                
-                                                <div class="form-group">
-                                                    <label class="col-lg-2 control-label" for="disabledInput">ID Kota</label>
-                                                    <div class="col-lg-10">
-                                                        <input class="form-control disabled" id="disabledInput" placeholder="no ID" disabled="" type="text">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-lg-2 control-label" for="selectError">Provisi</label>
-                                                    <div class="col-lg-10">
-                                                        <select id="selectError" class="form-control">
-                                                            <option>Kalimantan Selatan</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label class="col-lg-2 control-label" for="focusedInput">Nama Kota/Kabupaten</label>
-                                                    <div class="col-lg-10">
-                                                        <input class="form-control" id="focusedInput"  type="text">
-                                                    </div>
-                                                </div>
-                                                <button type="submit" class="btn btn-primary">Simpan</button>
-                                                <button type="reset" class="btn btn-default">Batal</button>
-                                            </fieldset>
-                                        </form>
-                                        <div class="bootstrap-admin-panel-content">
-                                            <table class="table bootstrap-admin-table-with-actions">
-                                                <thead>
-                                                    <tr>
-                                                        <th>No</th>
-                                                        <th>Nama Provinsi</th>
-                                                        <th>Kota</th>
-                                                        <th></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>3</td>
-                                                        <td>Jawa Timur</td>
-                                                        <td>Surabaya</td>
-                                                        <td class="actions">
-                                                            <a href="#">
-                                                                <button class="btn btn-sm btn-primary">
-                                                                    <i class="glyphicon glyphicon-pencil"></i>
-                                                                    Edit
-                                                                </button>
-                                                            </a>
-                                                            <a href="#">
-                                                                <button class="btn btn-sm btn-danger">
-                                                                    <i class="glyphicon glyphicon-trash"></i>
-                                                                    Delete
-                                                                </button>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade" id="tab3primary">
-                                        <form class="form-horizontal">
-                                            <fieldset>
-                                                <legend>Data Titik Pantau</legend>
-                                                
-                                                <div class="form-group">
-                                                    <label class="col-lg-2 control-label" for="disabledInput">ID Lokasi Pantau</label>
-                                                    <div class="col-lg-10">
-                                                        <input class="form-control disabled" id="disabledInput" placeholder="no ID" disabled="" type="text">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-lg-2 control-label" for="selectError">Kota</label>
-                                                    <div class="col-lg-10">
-                                                        <select id="selectError" class="form-control">
-                                                            <option>Surabaya</option>
-                                                            <option>Denpasar</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-lg-2 control-label" for="focusedInput">Nama Dermaga</label>
-                                                    <div class="col-lg-10">
-                                                        <input class="form-control" id="focusedInput"  type="text">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="col-lg-2 control-label" for="focusedInput">Alamat Dermaga</label>
-                                                    <div class="col-lg-10">
-                                                        <input class="form-control" id="focusedInput"  type="text">
-                                                    </div>
-                                                </div>
-                                                
-                                                <button type="submit" class="btn btn-primary">Simpan</button>
-                                                <button type="reset" class="btn btn-default">Batal</button>
-                                            </fieldset>
-                                        </form>
-
-                                         <div class="bootstrap-admin-panel-content">
-                                            <table class="table bootstrap-admin-table-with-actions">
-                                                <thead>
-                                                    <tr>
-                                                        <th>No</th>
-                                                        <th>Provinsi</th>
-                                                        <th>Dermaga</th>
-                                                        <th>Alamat Dermaga</th>
-                                                        <th></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>3</td>
-                                                        <td>Jatim</td>
-                                                        <td>Tanjung Perak</td>
-                                                        <td></td>
-                                                        <td class="actions">
-                                                            <a href="#">
-                                                                <button class="btn btn-sm btn-primary">
-                                                                    <i class="glyphicon glyphicon-pencil"></i>
-                                                                    Edit
-                                                                </button>
-                                                            </a>
-                                                            <a href="#">
-                                                                <button class="btn btn-sm btn-danger">
-                                                                    <i class="glyphicon glyphicon-trash"></i>
-                                                                    Delete
-                                                                </button>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
+                                                    <?php } ?>
                                                 </tbody>
                                             </table>
                                         </div>

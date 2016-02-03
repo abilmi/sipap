@@ -40,11 +40,33 @@
                                             <fieldset>
                                                 
                                                 <div class="form-group">
-                                                    <label class="col-lg-2 control-label" for="disabledInput">ID Komoditi</label>
+                                                    <label class="col-lg-2 control-label" for="disabledInput">Kode Transaksi</label>
                                                     <div class="col-lg-10">
-                                                        <input class="form-control disabled" id="komoditi_kode" disabled="" type="text" value="<?php echo $selected['KOMODITI_KODE']; ?>">
+                                                        <input class="form-control disabled" id="transaksi_kode" disabled="" type="text" value="<?php echo $selected['TRANSAKSI_KODE']; ?>">
                                                     </div>
                                                 </div>
+                                                <div class="form-group">
+                                                    <label class="col-lg-2 control-label" for="selectError">Asal Kota</label>
+                                                    <div class="col-lg-10">
+                                                        <select id="pelabuhan_kode" class="form-control">
+                                                            <?php $c = $selected['KOTA_KODE']; ?>
+                                                            <?php foreach ($daftar_kota as $a)    {?>
+                                                            <?php if ($c == $a->KOTA_KODE) {?>
+                                                            <option value="<?php echo $a->KOTA_KODE; ?>" selected='selected'><?php echo $a->KOTA_NAMA; ?></option>
+                                                            <?php } else {?>
+                                                            <option value="<?php echo $a->KOTA_KODE; ?>" ><?php echo $a->KOTA_NAMA; ?></option>
+                                                            <?php }?>
+                                                            <?php }?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+
+
+
+
+
+
                                                 <div class="form-group">
                                                     <label class="col-lg-2 control-label" for="focusedInput">Nama Komoditi</label>
                                                     <div class="col-lg-10">
@@ -92,50 +114,7 @@
                                             </fieldset>
                                         </form>
 
-                                         <div class="bootstrap-admin-panel-content">
-                                            <table class="table bootstrap-admin-table-with-actions">
-                                                <thead>
-                                                    <tr>
-                                                        <th>No</th>
-                                                        <th>Nama Komoditi</th>
-                                                        <th>Jenis (*Kayu)</th>
-                                                        <th>Asal (*Kayu)</th>
-                                                        <th>Bentuk (*Kayu)</th>
-                                                        <th></th>
-                                                    </tr>
-                                                </thead>
-                                                
-                                                <tbody>
-                                                    <?php
-                                                    $no = 1;
-                                                    ?>
-                                                    <?php foreach ($komoditi_nama as $a) {?>
-                                                    <tr>
-                                                        <td><?php echo $no++ ?></td>
-                                                        <td><?php echo $a->KOMODITI_NAMA; ?></td>
-                                                        <td><?php echo $a->KOMODITI_JENIS; ?></td>
-                                                        <td><?php echo $a->KOMODITI_ASAL; ?></td>
-                                                        <td><?php echo $a->KOMODITI_BENTUK; ?></td>
-                                                        <td><?php echo $a->SATUAN; ?></td>
-                                                        <td class="actions">
-                                                            <a href="<?php echo site_url ('komoditi/master_data_komoditi/'.$a->KOMODITI_KODE)?>">
-                                                                <button class="btn btn-sm btn-primary">
-                                                                    <i class="glyphicon glyphicon-pencil"></i>
-                                                                    Edit
-                                                                </button>
-                                                            </a>
-                                                            <a href="<?php echo site_url ('komoditi/delete_komoditi/'.$a->KOMODITI_KODE)?>">
-                                                                <button class="btn btn-sm btn-danger">
-                                                                    <i class="glyphicon glyphicon-trash"></i>
-                                                                    Delete
-                                                                </button>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                    <?php } ?>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                         
                                     </div>
                                 </div>
                             </div>

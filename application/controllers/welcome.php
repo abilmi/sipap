@@ -21,6 +21,14 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('login/index');
 	}
+
+	public function main_dashboard()
+	{
+		$this->load->view('report/head_side.php');
+		$this->load->view('report/halaman_utama.php');
+		$this->load->view('report/foot.php');
+
+	}
 }
 
 /* End of file welcome.php */

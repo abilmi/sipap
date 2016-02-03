@@ -38,8 +38,9 @@
 |
 */
 
-$route['default_controller'] = "report";
+$route['default_controller'] = 'report';
 $route['404_override'] = '';
+$route['tes'] = 'report/laporanBongkarMuat';
 
 
 /* End of file routes.php */

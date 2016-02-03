@@ -10,9 +10,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
+
     <!--[if IE]>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <![endif]-->
+        <link rel="icon" type="image/png" href="asset/login/img/jatim.png">
     <title>SIPAP JATIM</title>
     <!-- BOOTSTRAP CORE STYLE CSS -->
     <link href="asset/login/css/bootstrap.css" rel="stylesheet" />
@@ -84,7 +86,7 @@
                             <input type="password" class="form-control" required="required" placeholder="Password Anda" />
                         </div>
                         <div class="form-group">
-                            <a href="admin-dashboard.html" class="btn btn-success">Masuk</a>
+                            <a href="index.php/welcome/main_dashboard" class="btn btn-success">Masuk</a>
                         </div>
                         <a href="#">Lupa Password ?</a>
 

@@ -4,8 +4,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <footer role="contentinfo">
-                            <p class="left">Bootstrap 3.x Admin Theme</p>
-                            <p class="right">&copy; 2013 <a href="http://www.meritoo.pl" target="_blank">Meritoo.pl</a></p>
+                            <p class="left">SIPAP JATIM | Satminkal Disperindag Jatim 2016</p>
+                            <p class="right">&copy; Dinas Perindustrian dan Perdagangan. Provinsi Jawa Timur </p>
                         </footer>
                     </div>
                 </div>
